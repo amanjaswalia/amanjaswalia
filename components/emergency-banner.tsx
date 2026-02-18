@@ -34,7 +34,7 @@ export function EmergencyBanner() {
           animate={{ height: "auto", opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="sticky top-0 z-[60] bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white"
         >
           <div className="container mx-auto px-4 py-2.5 flex items-center justify-center gap-4 text-sm">
             <span className="flex items-center gap-2">

@@ -8,6 +8,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { LanguageSelector } from "@/components/language-selector"
 import { useLanguage } from "@/lib/i18n/language-context"
 import { cn } from "@/lib/utils"
+import { EmergencyBanner } from "@/components/emergency-banner"
 
 const navItems = [
   { key: "nav.home", href: "#home" },
@@ -47,14 +48,16 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+      className="fixed top-0 left-0 right-0 z-50"
+    >
+      <EmergencyBanner />
+      <nav className={cn(
+        "transition-all duration-300",
         isScrolled
           ? "bg-background/80 backdrop-blur-md border-b"
           : "bg-transparent"
-      )}
-    >
-      <nav className="container mx-auto px-4 py-4">
+      )}>
+        <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <motion.a
             href="#home"
@@ -113,45 +116,46 @@ export function Navbar() {
             </Button>
           </div>
         </div>
-      </nav>
+        </div>
 
-      {/* Mobile Navigation */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-background/95 backdrop-blur-md border-b"
-          >
-            <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.key}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    scrollToSection(item.href)
-                  }}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+        {/* Mobile Navigation */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden bg-background/95 backdrop-blur-md border-b"
+            >
+              <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+                {navItems.map((item) => (
+                  <a
+                    key={item.key}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      scrollToSection(item.href)
+                    }}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+                  >
+                    {t(item.key)}
+                  </a>
+                ))}
+                <div className="flex items-center gap-2 py-2">
+                  <LanguageSelector />
+                  <ThemeToggle />
+                </div>
+                <Button
+                  onClick={() => scrollToSection("#contact")}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 w-full"
                 >
-                  {t(item.key)}
-                </a>
-              ))}
-              <div className="flex items-center gap-2 py-2">
-                <LanguageSelector />
-                <ThemeToggle />
+                  {t("nav.hireMe")}
+                </Button>
               </div>
-              <Button
-                onClick={() => scrollToSection("#contact")}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 w-full"
-              >
-                {t("nav.hireMe")}
-              </Button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
     </motion.header>
   )
 }

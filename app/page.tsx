@@ -10,12 +10,10 @@ import { TestimonialsSection } from "@/components/sections/testimonials"
 import { GallerySection } from "@/components/sections/gallery"
 import { ContactSection } from "@/components/sections/contact"
 import { WhatsAppButton } from "@/components/whatsapp-button"
-import { EmergencyBanner } from "@/components/emergency-banner"
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <EmergencyBanner />
       <Navbar />
       <HeroSection />
       <AboutSection />
