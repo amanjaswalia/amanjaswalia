@@ -30,28 +30,33 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseUrl()),
   title: {
-    default: "Amandeep Singh | Full-Stack Developer & AI Solutions Specialist",
+    default: "Amandeep Singh | Full Stack Engineer - React, Next.js, Node.js, Django, AI",
     template: "%s | Amandeep Singh",
   },
   description:
-    "Full-Stack Developer specializing in AI-powered solutions, web development, SaaS, and mobile apps. Based in Mohali, India, available for freelance work worldwide. Expert in React, Next.js, Node.js, and LLM integration.",
+    "Full Stack Engineer with 13+ years of experience building scalable web and mobile solutions. Specializing in React, Next.js, Node.js, Django, Python, React Native, and AI integrations. Based in Mohali, India, available for immediate hire worldwide with 40+ hours/week.",
   keywords: [
-    "Full-Stack Developer",
-    "AI Solutions",
-    "Web Development",
+    "Full Stack Developer",
+    "Full Stack Engineer",
     "React Developer",
     "Next.js Developer",
-    "SaaS Development",
-    "WordPress Developer",
+    "Node.js Developer",
+    "Django Developer",
+    "Python Developer",
+    "React Native Developer",
+    "AI Solutions Specialist",
+    "TypeScript Developer",
     "Freelance Developer India",
-    "LLM Integration",
-    "RAG Systems",
-    "AI Chatbots",
-    "Mobile App Development",
-    "Digital Marketing",
-    "SEO Expert",
+    "SaaS Development",
+    "NestJS Developer",
+    "GraphQL Developer",
+    "FastAPI Developer",
+    "PostgreSQL",
+    "MongoDB",
+    "AWS Developer",
     "Mohali Developer",
-    "US Clients",
+    "Hire Full Stack Developer",
+    "Remote Developer US Timezone",
   ],
   authors: [{ name: "Amandeep Singh", url: "https://amandeepsingh.dev" }],
   creator: "Amandeep Singh",
@@ -77,9 +82,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     alternateLocale: ["fr_FR", "de_DE", "es_ES", "nl_NL", "it_IT"],
     url: getBaseUrl(),
-    title: "Amandeep Singh | Full-Stack Developer & AI Solutions Specialist",
+    title: "Amandeep Singh | Full Stack Engineer - React, Next.js, Node.js, Django, AI",
     description:
-      "Full-Stack Developer specializing in AI-powered solutions, web development, SaaS, and mobile apps. Expert in React, Next.js, and LLM integration.",
+      "Full Stack Engineer with 13+ years experience. React, Next.js, Node.js, Django, React Native, AI integrations. Available for immediate hire, 40+ hrs/week, US timezone.",
     siteName: "Amandeep Singh Portfolio",
     images: [
       {
@@ -92,9 +97,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Amandeep Singh | Full-Stack Developer & AI Solutions Specialist",
+    title: "Amandeep Singh | Full Stack Engineer - React, Next.js, Django, AI",
     description:
-      "Full-Stack Developer specializing in AI-powered solutions, web development, SaaS, and mobile apps.",
+      "Full Stack Engineer with 13+ years experience. React, Next.js, Node.js, Django, AI integrations. Available for hire.",
     creator: "@amanjaswalia",
     images: ["/og-image.png"],
   },
@@ -109,10 +114,39 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
   category: "technology",
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Amandeep Singh",
+  url: "https://amandeepsingh.dev",
+  jobTitle: "Full Stack Engineer",
+  description: "Full Stack Engineer with 13+ years of experience building scalable web and mobile solutions.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mohali",
+    addressRegion: "Punjab",
+    addressCountry: "IN",
+  },
+  email: "amanjaswalia@gmail.com",
+  telephone: "+919915020036",
+  sameAs: [
+    "https://www.linkedin.com/in/amanjaswalia/",
+    "https://github.com/amanjaswalia",
+    "https://x.com/amanjaswalia",
+    "https://t.me/amanjaswalia7",
+  ],
+  knowsAbout: [
+    "React", "Next.js", "Node.js", "Django", "Python", "TypeScript",
+    "React Native", "NestJS", "GraphQL", "FastAPI", "PostgreSQL",
+    "MongoDB", "AWS", "AI Integration", "Prompt Engineering",
+  ],
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Punjab Technical University",
+  },
 }
 
 export default function RootLayout({
@@ -124,6 +158,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="manifest" href="/manifest.json" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={inter.className}>
         <ThemeProvider

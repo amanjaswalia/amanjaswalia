@@ -6,14 +6,11 @@ import { useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import ReCAPTCHA from "react-google-recaptcha"
-import { useTheme } from "next-themes"
-import { Send, Mail, MapPin, Linkedin, Github, Loader2, CheckCircle2, Phone, Twitter } from "lucide-react"
+import { SendHorizontal, Mail, MapPin, Linkedin, Github, CheckCircle2, Phone, Twitter, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
-import { submitContactForm } from "@/app/actions/contact"
 import { useLanguage } from "@/lib/i18n/language-context"
 
 const contactInfo = [
@@ -28,6 +25,18 @@ const contactInfo = [
     labelKey: "Phone",
     value: "+91 99150 20036",
     href: "tel:+919915020036",
+  },
+  {
+    icon: MessageCircle,
+    labelKey: "contact.whatsapp",
+    value: "Chat on WhatsApp",
+    href: "https://wa.me/919915020036",
+  },
+  {
+    icon: SendHorizontal,
+    labelKey: "Telegram",
+    value: "@amanjaswalia7",
+    href: "https://t.me/amanjaswalia7",
   },
   {
     icon: MapPin,
@@ -55,18 +64,10 @@ const contactInfo = [
   },
 ]
 
-// reCAPTCHA site key - replace with your actual key
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-
 export function ContactSection() {
   const ref = useRef(null)
-  const recaptchaRef = useRef<ReCAPTCHA>(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
-  const [captchaError, setCaptchaError] = useState(false)
-  const { theme } = useTheme()
   const { t } = useLanguage()
 
   const contactSchema = z.object({
@@ -86,30 +87,13 @@ export function ContactSection() {
     resolver: zodResolver(contactSchema),
   })
 
-  const onCaptchaChange = (token: string | null) => {
-    setCaptchaToken(token)
-    setCaptchaError(false)
-  }
-
-  const onSubmit = async (data: ContactFormData) => {
-    if (!captchaToken) {
-      setCaptchaError(true)
-      return
-    }
-
-    setIsSubmitting(true)
-    try {
-      await submitContactForm({ ...data, captchaToken })
-      setIsSubmitted(true)
-      reset()
-      setCaptchaToken(null)
-      recaptchaRef.current?.reset()
-      setTimeout(() => setIsSubmitted(false), 5000)
-    } catch (error) {
-      console.error("Error submitting form:", error)
-    } finally {
-      setIsSubmitting(false)
-    }
+  const onSubmit = (data: ContactFormData) => {
+    const message = `Hi, I'm *${data.name}*.\nEmail: ${data.email}\n\n${data.message}`
+    const url = `https://wa.me/919915020036?text=${encodeURIComponent(message)}`
+    window.open(url, "_blank")
+    setIsSubmitted(true)
+    reset()
+    setTimeout(() => setIsSubmitted(false), 5000)
   }
 
   return (
@@ -198,37 +182,19 @@ export function ContactSection() {
                     )}
                   </div>
 
-                  {/* reCAPTCHA */}
-                  <div className="flex flex-col items-center">
-                    <ReCAPTCHA
-                      ref={recaptchaRef}
-                      sitekey={RECAPTCHA_SITE_KEY}
-                      onChange={onCaptchaChange}
-                      theme={theme === "dark" ? "dark" : "light"}
-                    />
-                    {captchaError && (
-                      <p className="mt-2 text-sm text-red-500">{t("contact.captchaError")}</p>
-                    )}
-                  </div>
-
                   <Button
                     type="submit"
-                    disabled={isSubmitting || isSubmitted}
+                    disabled={isSubmitted}
                     className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
                   >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        {t("contact.sending")}
-                      </>
-                    ) : isSubmitted ? (
+                    {isSubmitted ? (
                       <>
                         <CheckCircle2 className="w-4 h-4 mr-2" />
                         {t("contact.sent")}
                       </>
                     ) : (
                       <>
-                        <Send className="w-4 h-4 mr-2" />
+                        <MessageCircle className="w-4 h-4 mr-2" />
                         {t("contact.send")}
                       </>
                     )}
@@ -304,6 +270,27 @@ export function ContactSection() {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Google Maps */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 1.0, duration: 0.5 }}
+          className="mt-16 max-w-5xl mx-auto"
+        >
+          <div className="rounded-xl overflow-hidden border">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d109744.22357840854!2d76.68831233267498!3d30.737185818498498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fee906da6f81f%3A0x512998f16ce508d8!2sMohali%2C%20Punjab%2C%20India!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+              width="100%"
+              height="300"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Mohali, India - Location"
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   )

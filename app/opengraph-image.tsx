@@ -91,7 +91,7 @@ export default async function Image() {
             marginBottom: "32px",
           }}
         >
-          Full-Stack Developer | AI-Powered Solutions Specialist
+          Full Stack Engineer | React, Next.js, Django, AI
         </div>
 
         {/* Tags */}
@@ -101,7 +101,7 @@ export default async function Image() {
             gap: "16px",
           }}
         >
-          {["React", "Next.js", "AI/LLMs", "SaaS"].map((tag) => (
+          {["React", "Next.js", "Node.js", "Django", "AI"].map((tag) => (
             <div
               key={tag}
               style={{

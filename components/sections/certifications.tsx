@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { Award, Calendar } from "lucide-react"
+import { Award, Calendar, ExternalLink } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useLanguage } from "@/lib/i18n/language-context"
@@ -12,18 +12,56 @@ const certificationKeys = [
   {
     titleKey: "certifications.aiChatbots",
     provider: "KNIME",
-    date: "2024",
+    date: "December 2025",
     descriptionKey: "certifications.aiChatbotsDesc",
     skills: ["AI Chatbots", "RAG", "AI Governance", "LLMs"],
     color: "from-green-500 to-emerald-500",
+    certificateUrl: "/certificates/ai-chatbots-rag-governance.pdf",
   },
   {
     titleKey: "certifications.llm",
     provider: "LinkedIn Learning",
-    date: "2024",
+    date: "January 2026",
     descriptionKey: "certifications.llmDesc",
     skills: ["LLMs", "NLP", "AI Fundamentals", "Transformers"],
     color: "from-blue-500 to-cyan-500",
+    certificateUrl: "/certificates/introduction-to-llm.pdf",
+  },
+  {
+    titleKey: "certifications.reactNative",
+    provider: "Udemy",
+    date: "July 2023",
+    descriptionKey: "certifications.reactNativeDesc",
+    skills: ["React Native", "Mobile Development", "iOS", "Android"],
+    color: "from-purple-500 to-indigo-500",
+    certificateUrl: "/certificates/react-native.pdf",
+  },
+  {
+    titleKey: "certifications.jasperAi",
+    provider: "Coursiv",
+    date: "February 2026",
+    descriptionKey: "certifications.jasperAiDesc",
+    skills: ["Jasper AI", "AI Content", "Copywriting", "Prompt Engineering"],
+    color: "from-orange-500 to-amber-500",
+    certificateUrl: "/certificates/jasper-ai.pdf",
+  },
+  {
+    titleKey: "certifications.claude",
+    provider: "Coursiv",
+    date: "February 2026",
+    descriptionKey: "certifications.claudeDesc",
+    skills: ["Claude AI", "Prompt Engineering", "AI Assistants", "LLMs"],
+    color: "from-amber-500 to-yellow-500",
+    certificateUrl: "/certificates/claude-ai.pdf",
+  },
+  {
+    titleKey: "certifications.midjourney",
+    provider: "Coursiv",
+    date: "February 2026",
+    descriptionKey: "certifications.midjourneyDesc",
+    skills: ["Midjourney", "AI Art", "Image Generation", "Prompt Design"],
+    color: "from-pink-500 to-rose-500",
+    certificateUrl: "/certificates/midjourney.pdf",
   },
 ]
 
@@ -106,6 +144,17 @@ export function CertificationsSection() {
                       </Badge>
                     ))}
                   </div>
+                  {cert.certificateUrl && (
+                    <a
+                      href={cert.certificateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-blue-500 hover:text-blue-400 font-medium transition-colors"
+                    >
+                      {t("certifications.viewCertificate")}
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
                 </CardContent>
               </Card>
             </motion.div>

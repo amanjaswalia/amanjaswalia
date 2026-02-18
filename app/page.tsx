@@ -6,11 +6,16 @@ import { ServicesSection } from "@/components/sections/services"
 import { ExperienceSection } from "@/components/sections/experience"
 import { SkillsSection } from "@/components/sections/skills"
 import { CertificationsSection } from "@/components/sections/certifications"
+import { TestimonialsSection } from "@/components/sections/testimonials"
+import { GallerySection } from "@/components/sections/gallery"
 import { ContactSection } from "@/components/sections/contact"
+import { WhatsAppButton } from "@/components/whatsapp-button"
+import { EmergencyBanner } from "@/components/emergency-banner"
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <EmergencyBanner />
       <Navbar />
       <HeroSection />
       <AboutSection />
@@ -18,8 +23,11 @@ export default function Home() {
       <ExperienceSection />
       <SkillsSection />
       <CertificationsSection />
+      <TestimonialsSection />
+      <GallerySection />
       <ContactSection />
       <Footer />
+      <WhatsAppButton />
     </main>
   )
 }
