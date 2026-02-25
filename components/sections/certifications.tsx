@@ -63,6 +63,24 @@ const certificationKeys = [
     color: "from-pink-500 to-rose-500",
     certificateUrl: "/certificates/midjourney.pdf",
   },
+  {
+    titleKey: "certifications.gemini",
+    provider: "Coursiv",
+    date: "February 2026",
+    descriptionKey: "certifications.geminiDesc",
+    skills: ["Gemini AI", "Google AI", "Prompt Engineering", "LLMs"],
+    color: "from-blue-500 to-violet-500",
+    certificateUrl: "/certificates/gemini-ai.pdf",
+  },
+  {
+    titleKey: "certifications.lovable",
+    provider: "Coursiv",
+    date: "February 2026",
+    descriptionKey: "certifications.lovableDesc",
+    skills: ["Lovable", "AI App Builder", "Full-Stack Development", "Rapid Prototyping"],
+    color: "from-rose-500 to-orange-500",
+    certificateUrl: "/certificates/lovable.pdf",
+  },
 ]
 
 export function CertificationsSection() {
@@ -170,15 +188,20 @@ export function CertificationsSection() {
         >
           <h3 className="text-lg font-semibold mb-4">{t("certifications.languages")}</h3>
           <div className="flex justify-center gap-4">
-            {["Hindi", "English", "Punjabi"].map((language, index) => (
+            {[
+              { name: "Hindi", level: "Native" },
+              { name: "English", level: "Advanced" },
+              { name: "Punjabi", level: "Native" },
+            ].map((language, index) => (
               <motion.div
-                key={language}
+                key={language.name}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.6 + index * 0.1 }}
-                className="bg-background/50 border rounded-lg px-6 py-3"
+                className="bg-background/50 border rounded-lg px-6 py-3 text-center"
               >
-                <span className="font-medium">{language}</span>
+                <span className="font-medium block">{language.name}</span>
+                <span className="text-xs text-muted-foreground">{language.level}</span>
               </motion.div>
             ))}
           </div>
