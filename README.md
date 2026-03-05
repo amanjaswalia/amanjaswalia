@@ -42,10 +42,3 @@ npm start
 
 Deployed on [Vercel](https://vercel.com). Push to `main` to auto-deploy.
 
-## Contact
-
-- Email: amanjaswalia@gmail.com
-- WhatsApp: [+91 99150 20036](https://wa.me/919915020036)
-- LinkedIn: [linkedin.com/in/amanjaswalia](https://www.linkedin.com/in/amanjaswalia/)
-- GitHub: [github.com/amanjaswalia](https://github.com/amanjaswalia)
-- Telegram: [@amanjaswalia7](https://t.me/amanjaswalia7)
