@@ -30,6 +30,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "hero.viewWork": "View Work",
     "hero.contactMe": "Contact Me",
     "hero.scrollDown": "Scroll Down",
+    "hero.downloadResume": "Download Resume",
+    "hero.downloadPDF": "Download PDF",
+    "hero.downloadDOC": "Download DOC",
 
     // About
     "about.title": "About",
@@ -292,6 +295,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "hero.viewWork": "Voir Travaux",
     "hero.contactMe": "Me Contacter",
     "hero.scrollDown": "Défiler vers le bas",
+    "hero.downloadResume": "Télécharger CV",
+    "hero.downloadPDF": "Télécharger PDF",
+    "hero.downloadDOC": "Télécharger DOC",
 
     // About
     "about.title": "À",
@@ -554,6 +560,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "hero.viewWork": "Arbeiten ansehen",
     "hero.contactMe": "Kontaktieren",
     "hero.scrollDown": "Nach unten scrollen",
+    "hero.downloadResume": "Lebenslauf herunterladen",
+    "hero.downloadPDF": "PDF herunterladen",
+    "hero.downloadDOC": "DOC herunterladen",
 
     // About
     "about.title": "Über",
@@ -816,6 +825,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "hero.viewWork": "Ver Trabajo",
     "hero.contactMe": "Contáctame",
     "hero.scrollDown": "Desplazar hacia abajo",
+    "hero.downloadResume": "Descargar CV",
+    "hero.downloadPDF": "Descargar PDF",
+    "hero.downloadDOC": "Descargar DOC",
 
     // About
     "about.title": "Sobre",
@@ -1078,6 +1090,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "hero.viewWork": "Bekijk Werk",
     "hero.contactMe": "Neem Contact Op",
     "hero.scrollDown": "Scroll naar beneden",
+    "hero.downloadResume": "Download CV",
+    "hero.downloadPDF": "Download PDF",
+    "hero.downloadDOC": "Download DOC",
 
     // About
     "about.title": "Over",
@@ -1340,6 +1355,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "hero.viewWork": "Vedi Lavori",
     "hero.contactMe": "Contattami",
     "hero.scrollDown": "Scorri verso il basso",
+    "hero.downloadResume": "Scarica CV",
+    "hero.downloadPDF": "Scarica PDF",
+    "hero.downloadDOC": "Scarica DOC",
 
     // About
     "about.title": "Chi",

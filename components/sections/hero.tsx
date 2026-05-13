@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowDown, Briefcase, Mail } from "lucide-react"
+import { ArrowDown, Briefcase, Mail, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/i18n/language-context"
 
@@ -121,6 +121,15 @@ export function HeroSection() {
             >
               <Mail className="w-5 h-5" />
               {t("hero.contactMe")}
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="gap-2 border-blue-500/50 hover:border-blue-500"
+              onClick={() => window.open("/resume", "_blank")}
+            >
+              <Download className="w-5 h-5" />
+              {t("hero.downloadResume")}
             </Button>
           </motion.div>
         </motion.div>
